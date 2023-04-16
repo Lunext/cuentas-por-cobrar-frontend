@@ -2,20 +2,25 @@ import React from 'react'
 import TransactionList from '../Components/Transaction/TransactionList'
 import { TransactionProvider } from '../context/TransactionProvider';
 import TransactionForm from '../Components/Transaction/TransactionForm';
-import Customer from '../Components/Customers/Customer';
 import { CustomerProvider } from '../context/CustomerProvider';
-import Document from '../Components/Document/Document';
 import { DocumentProvider } from '../context/DocumentProvider';
-
+import TransactionFilteredByDate from '../Components/Transaction/TransactionFilteredByDate';
+ import SentToContabilidadButton from '../Components/sentToContabilidadButton';
 const TransactionManagement = () => {
+
+
+
+
     return (
       <div className='mx-auto px-10'>
       <TransactionProvider>
         <CustomerProvider>
             <DocumentProvider>
-            
+           
           
-                <TransactionForm /> 
+              <TransactionForm /> 
+              <TransactionFilteredByDate />
+             <SentToContabilidadButton/>
             </DocumentProvider>
         </CustomerProvider>
 

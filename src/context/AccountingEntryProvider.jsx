@@ -1,6 +1,6 @@
 
 import { createContext, useState, useEffect } from "react";
-import axiosClient from "../config/axios";
+import { axiosClient } from "../config/axios";
 import config from "../config/header";
 
 import { swalButton } from "../Components/DeletingFile";

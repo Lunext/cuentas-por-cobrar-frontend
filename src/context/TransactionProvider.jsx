@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import axiosClient from "../config/axios";
+import { axiosClient }  from "../config/axios";
 import config from "../config/header";
 import Swal from "sweetalert2";
 import { swalButton } from "../Components/DeletingFile";
@@ -26,7 +26,50 @@ const TransactionProvider = ({children}) => {
             console.log(error);
         }
     }
+    const getTransactionsByDate = async (firstDate,lastDate) => {
+        try {
+            const { data } = await axiosClient("/transaction/getByDates", config); 
 
+            const filteredByDate = transactions.filter(transaction => transaction.transactionDate >= firstDate && transaction.transactionDate <= lastDate);
+            setTransactions(filteredByDate);
+        }
+        catch (error) {
+            console.log(error); 
+        }
+    }
+
+
+
+    // const sendToContabilidad = async ()=>{
+    //     try {
+    //         let totalAmount = 0; 
+    //         transactions.forEach((transaction) => {
+    //             totalAmount += transaction.amount; 
+    //         })
+    //         const { data } = await axiosClient.post("/transaction/accountingentry", {
+    //             "id_aux": 5,
+    //             "nombre_aux": "Cuentas Por cobrar", 
+    //             "cuenta": 1, 
+    //             "origen": "CR", 
+    //             "monto": totalAmount
+    //         }, config); 
+
+
+
+    //         setTransactions([...transactions, data]); 
+    
+    //         getTransactions();
+             
+    //     } catch (error) {
+    //         console.log(error); 
+    //         return false
+    //      }
+
+    //     return true; 
+    // } 
+    
+
+    
     const saveTransaction= async(transaction)=>{
      
         if(transaction.transactionId){
@@ -97,8 +140,11 @@ const TransactionProvider = ({children}) => {
             transactions,
             saveTransaction,
             setEdit,
-            transaction,
-            deleteTransaction
+                transaction,
+            getTransactions,
+            getTransactionsByDate,
+                deleteTransaction, 
+             sendToContabilidad
         }}>
             {children}
         </TransactionContext.Provider>

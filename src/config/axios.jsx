@@ -1,7 +1,9 @@
 import axios from "axios";
 
 const axiosClient=axios.create({
-    baseURL:`https://localhost:5002/api`
+    baseURL:`https://cuentasporcobrarapi.azurewebsites.net/api`
 })
 
-export default axiosClient;
+
+
+export { axiosClient};

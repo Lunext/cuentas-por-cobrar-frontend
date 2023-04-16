@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 //Hace falta el folder config
-import axiosClient from "../config/axios";
+import { axiosClient } from "../config/axios";
 import config from "../config/header";
 import Swal from "sweetalert2";
 import { swalButton } from "../Components/DeletingFile";
@@ -28,6 +28,8 @@ const DocumentProvider = ({children}) => {
         }
     }
 
+
+    
     const saveDocument=async(document)=>{
         
         if(document.documentId){

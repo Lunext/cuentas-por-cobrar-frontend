@@ -44,7 +44,7 @@ const DocumentForm = () => {
                 savingChangesAlert();
                 console.log('Lo estas logrando!'); 
                 setDescription(''); 
-                setLedgerAccount(0); 
+                setLedgerAccount(5); 
                 setState();
             };
             setOpen(false); 
